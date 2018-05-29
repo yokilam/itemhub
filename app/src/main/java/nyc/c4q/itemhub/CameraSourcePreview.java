@@ -53,7 +53,6 @@ public class CameraSourcePreview extends ViewGroup {
     if (cameraSource == null) {
       stop();
     }
-
     this.cameraSource = cameraSource;
 
     if (this.cameraSource != null) {
@@ -124,7 +123,7 @@ public class CameraSourcePreview extends ViewGroup {
   @Override
   protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
     int width = 320;
-    int height = 240;
+    int height = 200;
     if (cameraSource != null) {
       Size size = cameraSource.getPreviewSize();
       if (size != null) {

@@ -26,26 +26,24 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import java.io.IOException;
 import java.util.List;
 
+import nyc.c4q.itemhub.CameraActivity;
 import nyc.c4q.itemhub.FrameMetadata;
 import nyc.c4q.itemhub.GraphicOverlay;
+import nyc.c4q.itemhub.ScanResult;
 import nyc.c4q.itemhub.VisionProcessorBase;
 
-/**
- * Barcode Detector Demo.
- */
 public class BarcodeScanningProcessor extends VisionProcessorBase <List <FirebaseVisionBarcode>> {
 
-    private static final String TAG = "BarcodeScanProc";
+    private static final String TAG = "ScanProc";
+    private static final String BARCODE = "Barcode";
+    private static long barcodeNumber;
+    ScanResult scanResultListener;
 
     private final FirebaseVisionBarcodeDetector detector;
 
-    public BarcodeScanningProcessor() {
-        // Note that if you know which format of barcode your app is dealing with, detection will be
-        // faster to specify the supported barcode formats one by one, e.g.
-        // new FirebaseVisionBarcodeDetectorOptions.Builder()
-        //     .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE)
-        //     .build();
+    public BarcodeScanningProcessor(ScanResult scanResultListener) {
         detector = FirebaseVision.getInstance().getVisionBarcodeDetector();
+        this.scanResultListener=scanResultListener;
     }
 
     @Override
@@ -72,11 +70,18 @@ public class BarcodeScanningProcessor extends VisionProcessorBase <List <Firebas
             FirebaseVisionBarcode barcode = barcodes.get(i);
             BarcodeGraphic barcodeGraphic = new BarcodeGraphic(graphicOverlay, barcode);
             graphicOverlay.add(barcodeGraphic);
+            Log.d(BARCODE, "barcode: " + barcode.getRawValue());
+            barcodeNumber= Long.parseLong(barcode.getRawValue());
+            scanResultListener.getBarcodeResult(barcodeNumber);
         }
     }
 
     @Override
     protected void onFailure(@NonNull Exception e) {
         Log.e(TAG, "Barcode detection failed " + e);
+    }
+
+    public static long getBarcodeNumber() {
+        return barcodeNumber;
     }
 }

@@ -17,21 +17,19 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "ChooserActivity";
+    private static final String TAG = MainActivity.class.getSimpleName();
     private static final int PERMISSION_REQUESTS = 1;
-    private Button goToCameraButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        goToCameraButton= findViewById(R.id.scan_barcode_button);
-
         if (!allPermissionsGranted()) {
             getRuntimePermissions();
         }
 
+        Button goToCameraButton = findViewById(R.id.scan_barcode_button);
         goToCameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -132,10 +132,6 @@ public class CameraSource {
     processingRunnable = new FrameProcessingRunnable();
   }
 
-  // ==============================================================================================
-  // Public
-  // ==============================================================================================
-
   /** Stops the camera and releases the resources of the camera and underlying detector. */
   public void release() {
     synchronized (processorLock) {
@@ -240,14 +236,6 @@ public class CameraSource {
 
     // Release the reference to any image buffers, since these will no longer be in use.
     bytesToByteBuffer.clear();
-  }
-
-  /** Changes the facing of the camera. */
-  public synchronized void setFacing(int facing) {
-    if ((facing != CAMERA_FACING_BACK) && (facing != CAMERA_FACING_FRONT)) {
-      throw new IllegalArgumentException("Invalid camera: " + facing);
-    }
-    this.facing = facing;
   }
 
   /** Returns the preview size that is currently in use by the underlying camera. */

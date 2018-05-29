@@ -1,6 +1,7 @@
 package nyc.c4q.itemhub;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -8,20 +9,16 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import nyc.c4q.itemhub.barcodescanning.BarcodeScanningProcessor;
 
-/**
- * Created by yokilam on 5/26/18.
- */
-
-public class CameraActivity extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity implements ScanResult {
 
     private static final String TAG = "CameraActivity";
+    private static final String CAMERA = "Camera";
     private static final int PERMISSION_REQUESTS = 1;
 
     private static final String BARCODE_DETECTION = "Barcode Detection";
@@ -29,6 +26,7 @@ public class CameraActivity extends AppCompatActivity {
     private CameraSourcePreview preview;
     private GraphicOverlay graphicOverlay;
     private String selectedModel = BARCODE_DETECTION;
+    private BarcodeScanningProcessor barcodeScanningProcessor;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +42,15 @@ public class CameraActivity extends AppCompatActivity {
             Log.d(TAG, "graphicOverlay is null");
         }
 
+        barcodeScanningProcessor= new BarcodeScanningProcessor(this);
+        
         if (allPermissionsGranted()) {
             createCameraSource(selectedModel);
         } else {
             getRuntimePermissions();
         }
-
     }
+
 
     private void startCameraSource() {
         if (cameraSource != null) {
@@ -84,6 +84,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         preview.stop();
+        Log.d(TAG, "onPause: ==== I am ON PAUSE");
     }
 
     @Override
@@ -92,6 +93,7 @@ public class CameraActivity extends AppCompatActivity {
         if (cameraSource != null) {
             cameraSource.release();
         }
+        Log.d(TAG, "onDestroy: ===== I am ON DESTROY");
     }
 
     private String[] getRequiredPermissions() {
@@ -157,16 +159,30 @@ public class CameraActivity extends AppCompatActivity {
         // If there's no existing cameraSource, create one.
         if (cameraSource == null) {
             cameraSource = new CameraSource(this, graphicOverlay);
+            Log.d(TAG, "createCameraSource: ======== new camera source");
         }
 
         switch (model) {
             case BARCODE_DETECTION:
                 Log.i(TAG, "Using Barcode Detector Processor");
-                cameraSource.setMachineLearningFrameProcessor(new BarcodeScanningProcessor());
+                cameraSource.setMachineLearningFrameProcessor(barcodeScanningProcessor);
                 break;
             default:
                 Log.e(TAG, "Unknown model: " + model);
         }
-
     }
+
+    @Override
+    public void getBarcodeResult(long barcode) {
+        Log.d(TAG, "getBarcodeResult: " + barcode);
+        intentToResultActivity(barcode);
+    }
+
+    private void intentToResultActivity(long barcodeNumber) {
+        Intent intent = new Intent(CameraActivity.this, ProductResultActivity.class);
+        intent.putExtra("barcodeNumber", barcodeNumber);
+        startActivity(intent);
+    }
+
+
 }

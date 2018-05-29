@@ -13,6 +13,8 @@
 // limitations under the License.
 package nyc.c4q.itemhub.barcodescanning;
 
+import android.content.Intent;
+import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -20,7 +22,9 @@ import android.graphics.RectF;
 
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 
+import nyc.c4q.itemhub.CameraActivity;
 import nyc.c4q.itemhub.GraphicOverlay;
+import nyc.c4q.itemhub.ProductResultActivity;
 
 
 /** Graphic instance for rendering Barcode position and content information in an overlay view. */
@@ -34,10 +38,12 @@ public class BarcodeGraphic extends GraphicOverlay.Graphic {
   private final Paint barcodePaint;
   private final FirebaseVisionBarcode barcode;
 
+
   BarcodeGraphic(GraphicOverlay overlay, FirebaseVisionBarcode barcode) {
     super(overlay);
 
     this.barcode = barcode;
+//    barcodeNumber= Long.parseLong(barcode.getRawValue());
 
     rectPaint = new Paint();
     rectPaint.setColor(TEXT_COLOR);
@@ -49,6 +55,11 @@ public class BarcodeGraphic extends GraphicOverlay.Graphic {
     barcodePaint.setTextSize(TEXT_SIZE);
     // Redraw the overlay, as this graphic has been added.
     postInvalidate();
+
+
+//    Intent intent= new Intent(cameraActivity.getApplicationContext(), ProductResultActivity.class);
+//    intent.putExtra("barcodeNumber", barcode.getRawValue());
+//    cameraActivity.startActivity(intent);
   }
 
   /**
