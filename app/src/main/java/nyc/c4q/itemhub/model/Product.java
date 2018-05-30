@@ -9,8 +9,8 @@ public class Product {
     private String model;
     private String color;
     private String upc;
-    private List<Offers> offers;
-    private String[] images;
+    private List <Offers> offers;
+    private List <String> images;
     private String lowest_recorded_price;
     private String highest_recorded_price;
 
@@ -42,7 +42,7 @@ public class Product {
         return offers;
     }
 
-    public String[] getImages() {
+    public List <String> getImages() {
         return images;
     }
 

@@ -8,6 +8,8 @@ public interface ProductContract {
 
     interface View{
         void showTitle(String title);
+        void showDescription(String description);
+        void showImage(String url);
     }
 
     interface Presenter{

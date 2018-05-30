@@ -2,6 +2,8 @@ package nyc.c4q.itemhub;
 
 import android.util.Log;
 
+import java.util.List;
+
 import nyc.c4q.itemhub.model.ProductSearchResult;
 import nyc.c4q.itemhub.network.UpcService;
 import retrofit2.Call;
@@ -37,8 +39,12 @@ public class ProductPresenter implements ProductContract.Presenter{
             public void onResponse(Call <ProductSearchResult> call, Response <ProductSearchResult> response) {
                 Log.d(TAG, "onResponse: I SEARCHING FOR RESULT");
                 ProductSearchResult productSearchResult = response.body();
-                String title= productSearchResult.getItems().get(0).getTitle();
-                viewImpl.showTitle(title);
+                String productName= productSearchResult.getItems().get(0).getTitle();
+                List<String> imageList= productSearchResult.getItems().get(0).getImages();
+                String productDescription= productSearchResult.getItems().get(0).getDescription();
+                viewImpl.showTitle(productName);
+                viewImpl.showDescription(productDescription);
+                viewImpl.showImage(imageList.get(0));
             }
 
             @Override
