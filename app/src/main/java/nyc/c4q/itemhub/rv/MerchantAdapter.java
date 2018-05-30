@@ -14,10 +14,14 @@ import nyc.c4q.itemhub.model.Offers;
 public class MerchantAdapter extends RecyclerView.Adapter<MerchantViewholder> {
     private List<Offers> merchantList;
 
+    public MerchantAdapter(List <Offers> merchantList) {
+        this.merchantList = merchantList;
+    }
+
     @NonNull
     @Override
     public MerchantViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.id.merchant_itemview, parent, false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.merchant_itemview, parent, false);
         return new MerchantViewholder(view);
     }
 

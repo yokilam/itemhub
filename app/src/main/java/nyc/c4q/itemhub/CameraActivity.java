@@ -21,7 +21,6 @@ import nyc.c4q.itemhub.barcodescanning.BarcodeScanningProcessor;
 public class CameraActivity extends AppCompatActivity implements ScanResult {
 
     private static final String TAG = "CameraActivity";
-    private static final String CAMERA = "Camera";
     private static final int PERMISSION_REQUESTS = 1;
 
     private static final String BARCODE_DETECTION = "Barcode Detection";
@@ -36,11 +35,11 @@ public class CameraActivity extends AppCompatActivity implements ScanResult {
 
         setContentView(R.layout.activity_camera);
 
-        preview = (CameraSourcePreview) findViewById(R.id.firePreview);
+        preview = findViewById(R.id.firePreview);
         if (preview == null) {
             Log.d(TAG, "Preview is null");
         }
-        graphicOverlay = (GraphicOverlay) findViewById(R.id.fireFaceOverlay);
+        graphicOverlay = findViewById(R.id.fireFaceOverlay);
         if (graphicOverlay == null) {
             Log.d(TAG, "graphicOverlay is null");
         }
