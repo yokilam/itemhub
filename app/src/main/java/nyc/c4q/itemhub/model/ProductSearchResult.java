@@ -1,9 +1,16 @@
 package nyc.c4q.itemhub.model;
 
-public class ProductSearchResult {
-    private Product product;
+import java.util.List;
 
-    public Product getProduct() {
-        return product;
+public class ProductSearchResult {
+    private int total;
+    private List<Product> items;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public List <Product> getItems() {
+        return items;
     }
 }

@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package nyc.c4q.itemhub;
+package nyc.c4q.itemhub.CameraUtils;
 
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -19,6 +19,9 @@ import android.media.Image;
 import com.google.firebase.ml.common.FirebaseMLException;
 
 import java.nio.ByteBuffer;
+
+import nyc.c4q.itemhub.CameraUtils.FrameMetadata;
+import nyc.c4q.itemhub.CameraUtils.GraphicOverlay;
 
 /** An inferface to process the images with different ML Kit detectors and custom image models. */
 public interface VisionImageProcessor {

@@ -26,11 +26,10 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import java.io.IOException;
 import java.util.List;
 
-import nyc.c4q.itemhub.CameraActivity;
-import nyc.c4q.itemhub.FrameMetadata;
-import nyc.c4q.itemhub.GraphicOverlay;
+import nyc.c4q.itemhub.CameraUtils.FrameMetadata;
+import nyc.c4q.itemhub.CameraUtils.GraphicOverlay;
 import nyc.c4q.itemhub.ScanResult;
-import nyc.c4q.itemhub.VisionProcessorBase;
+import nyc.c4q.itemhub.CameraUtils.VisionProcessorBase;
 
 public class BarcodeScanningProcessor extends VisionProcessorBase <List <FirebaseVisionBarcode>> {
 

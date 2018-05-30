@@ -13,8 +13,6 @@
 // limitations under the License.
 package nyc.c4q.itemhub.barcodescanning;
 
-import android.content.Intent;
-import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -22,9 +20,7 @@ import android.graphics.RectF;
 
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 
-import nyc.c4q.itemhub.CameraActivity;
-import nyc.c4q.itemhub.GraphicOverlay;
-import nyc.c4q.itemhub.ProductResultActivity;
+import nyc.c4q.itemhub.CameraUtils.GraphicOverlay;
 
 
 /** Graphic instance for rendering Barcode position and content information in an overlay view. */

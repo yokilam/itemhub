@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-public class ProductResultActivity extends AppCompatActivity {
+import nyc.c4q.itemhub.network.UpcService;
 
-    private TextView barcodeNum;
+public class ProductResultActivity extends AppCompatActivity implements ProductContract.View{
+
     public static final String TAG= ProductResultActivity.class.getSimpleName();
+    private ProductPresenter presenter;
+    private TextView barcodeNum;
+    long barcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +22,19 @@ public class ProductResultActivity extends AppCompatActivity {
 
         barcodeNum= findViewById(R.id.barcode_number);
 
-        Intent intent= getIntent();
-        long barcode= intent.getLongExtra("barcodeNumber",0);
+        barcode= getIntent().getLongExtra("barcodeNumber",0);
+        presenter=new ProductPresenter(this, new UpcService());
+        presenter.setBarcode(barcode);
+        presenter.start();
+
+
         Log.d(TAG, "onCreate: " + barcode);
-        barcodeNum.setText(String.valueOf(barcode));
+//        barcodeNum.setText(String.valueOf(barcode));
+    }
+
+    @Override
+    public void showTitle(String title) {
+        barcodeNum.setText(title);
+
     }
 }

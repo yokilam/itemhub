@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import nyc.c4q.itemhub.CameraUtils.CameraSource;
+import nyc.c4q.itemhub.CameraUtils.CameraSourcePreview;
+import nyc.c4q.itemhub.CameraUtils.GraphicOverlay;
 import nyc.c4q.itemhub.barcodescanning.BarcodeScanningProcessor;
 
 public class CameraActivity extends AppCompatActivity implements ScanResult {

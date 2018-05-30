@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package nyc.c4q.itemhub;
+package nyc.c4q.itemhub.CameraUtils;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -566,7 +566,7 @@ public class CameraSource {
     }
   }
 
-  void setMachineLearningFrameProcessor(VisionImageProcessor processor) {
+  public void setMachineLearningFrameProcessor(VisionImageProcessor processor) {
     synchronized (processorLock) {
       cleanScreen();
       if (frameProcessor != null) {
