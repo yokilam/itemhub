@@ -12,19 +12,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     >
 
-    <TextView
-        android:id="@+id/txtContent"
-        android:layout_width="94dp"
-        android:layout_height="22dp"
-        android:layout_marginBottom="8dp"
+    <Button
+        android:id="@+id/itemhub_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/scan_barcode_button"
+        android:layout_marginTop="272dp"
+        tools:text= "What is itemHub?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="barcode result" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/scan_barcode_button"
@@ -35,11 +33,13 @@
         android:layout_marginBottom="84dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Scan Barcode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemhub_info" />
 
     <ImageView
         android:layout_width="wrap_content"

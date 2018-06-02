@@ -2,6 +2,7 @@ package nyc.c4q.itemhub;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -73,5 +74,6 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
     private void setupRecyclerView() {
         merchantRecyclerView = findViewById(R.id.recyclerView);
         merchantRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        merchantRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 }

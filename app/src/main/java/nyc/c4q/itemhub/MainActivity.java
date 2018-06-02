@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Button goToCameraButton = findViewById(R.id.scan_barcode_button);
+        Button itemHubInfo= findViewById(R.id.itemhub_info);
+
         goToCameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

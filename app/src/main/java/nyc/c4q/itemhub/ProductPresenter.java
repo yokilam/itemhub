@@ -40,17 +40,21 @@ public class ProductPresenter implements ProductContract.Presenter{
             public void onResponse(Call <ProductSearchResult> call, Response <ProductSearchResult> response) {
                 Log.d(TAG, "onResponse: I SEARCHING FOR RESULT");
                 ProductSearchResult productSearchResult = response.body();
-                String productName= productSearchResult.getItems().get(0).getTitle();
-                List<String> imageList= productSearchResult.getItems().get(0).getImages();
-                String productDescription= productSearchResult.getItems().get(0).getDescription();
-                List<Offers> merchantList= productSearchResult.getItems().get(0).getOffers();
+                if (productSearchResult.getItems()==null){
 
-                viewImpl.showTitle(productName);
-                viewImpl.showDescription(productDescription);
-                viewImpl.showImage(imageList.get(0));
+                }else {
+                    String productName = productSearchResult.getItems().get(0).getTitle();
+                    List <String> imageList = productSearchResult.getItems().get(0).getImages();
+                    String productDescription = productSearchResult.getItems().get(0).getDescription();
+                    List <Offers> merchantList = productSearchResult.getItems().get(0).getOffers();
 
-                if (!merchantList.isEmpty()) {
-                    viewImpl.showMerchants(merchantList);
+                    viewImpl.showTitle(productName);
+                    viewImpl.showDescription(productDescription);
+                    viewImpl.showImage(imageList.get(1));
+
+                    if (!merchantList.isEmpty()) {
+                        viewImpl.showMerchants(merchantList);
+                    }
                 }
             }
 
