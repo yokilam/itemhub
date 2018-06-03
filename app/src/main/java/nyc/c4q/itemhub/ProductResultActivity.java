@@ -6,6 +6,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
     private TextView productName, description;
     private ImageView productImage;
     private RecyclerView merchantRecyclerView;
+    private WebView myWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +45,10 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
     }
 
     private void setUpViews() {
-        productName = findViewById(R.id.barcode_number);
+        productName = findViewById(R.id.product_name);
         description = findViewById(R.id.product_description);
         productImage = findViewById(R.id.product_picture);
+        myWebView = findViewById(R.id.webview);
     }
 
     @Override
@@ -69,6 +72,11 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
     public void showMerchants(List<Offers> merchantList) {
         MerchantAdapter merchantAdapter= new MerchantAdapter(merchantList);
         merchantRecyclerView.setAdapter(merchantAdapter);
+    }
+
+    @Override
+    public void loadWebsite(String url) {
+        myWebView.loadUrl(url);
     }
 
     private void setupRecyclerView() {

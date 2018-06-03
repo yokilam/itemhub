@@ -50,7 +50,7 @@ public class ProductPresenter implements ProductContract.Presenter{
 
                     viewImpl.showTitle(productName);
                     viewImpl.showDescription(productDescription);
-                    viewImpl.showImage(imageList.get(1));
+                    viewImpl.showImage(imageList.get(0));
 
                     if (!merchantList.isEmpty()) {
                         viewImpl.showMerchants(merchantList);

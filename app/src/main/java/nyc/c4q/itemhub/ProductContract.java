@@ -15,6 +15,7 @@ public interface ProductContract {
         void showDescription(String description);
         void showImage(String url);
         void showMerchants(List<Offers> merchantList);
+        void loadWebsite(String url);
     }
 
     interface Presenter{

@@ -19,7 +19,7 @@
     <!-- pink -->
     <color name="material_pink_50">#fffce4ec</color>
     <color name="material_pink_100">#fff8bbd0</color>
-    <color name="material_pink_200">#fff48fb1</color>
+    <color name="material_pink_200">#f48fb1</color>
     <color name="material_pink_300">#fff06292</color>
     <color name="material_pink_400">#ffec407a</color>
     <color name="material_pink_500">#ffe91e63</color>

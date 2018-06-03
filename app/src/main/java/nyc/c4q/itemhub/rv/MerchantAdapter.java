@@ -34,4 +34,5 @@ public class MerchantAdapter extends RecyclerView.Adapter<MerchantViewholder> {
     public int getItemCount() {
         return merchantList.size();
     }
+
 }

@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="contentDividerLine">#e0e0e0</color>
+    <color name="contentPinkDividerLine">#f48fb1</color>
+    <color name="contentPurpleDividerLine">#594691</color>
+    <color name="mainPurple">#594691</color>
+    <color name="rqstButton">#ffbf12</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="bgBackSideColor">#f4f0ff</color>
 
     <color name="grey_3">#f7f7f7</color>
     <color name="grey_5">#f2f2f2</color>
