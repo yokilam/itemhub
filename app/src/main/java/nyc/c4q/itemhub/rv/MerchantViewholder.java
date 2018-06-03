@@ -26,8 +26,8 @@ public class MerchantViewholder extends RecyclerView.ViewHolder {
         merchantName.setText(offers.getMerchant());
         domain.setText(offers.getDomain());
         price.setText(offers.getPrice());
-        shippingPrice.setText(offers.getShipping());
-        condition.setText(offers.getCondition());
-        link.setText(offers.getLink());
+//        shippingPrice.setText(offers.getShipping());
+//        condition.setText(offers.getCondition());
+//        link.setText(offers.getLink());
     }
 }
