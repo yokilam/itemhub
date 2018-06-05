@@ -16,6 +16,8 @@ public interface ProductContract {
         void showImage(String url);
         void showMerchants(List<Offers> merchantList);
         void loadWebsite(String url);
+        void showFragment();
+        void hideFragment();
     }
 
     interface Presenter{

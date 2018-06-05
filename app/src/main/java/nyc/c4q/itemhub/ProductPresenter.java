@@ -1,5 +1,6 @@
 package nyc.c4q.itemhub;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.List;
@@ -11,8 +12,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductPresenter implements ProductContract.Presenter{
-    private static final String TAG= "Presenter";
+public class ProductPresenter implements ProductContract.Presenter {
+    private static final String TAG = "Presenter";
     private ProductContract.View viewImpl;
     private UpcService upcService;
     private long barcodeNumber;
@@ -30,24 +31,23 @@ public class ProductPresenter implements ProductContract.Presenter{
 
     @Override
     public void setBarcode(long barcode) {
-        barcodeNumber=barcode;
+        barcodeNumber = barcode;
     }
 
     private void getProductResult() {
-        Call<ProductSearchResult> productCall= upcService.getUpcItemDbApi().getProductSearchResult(barcodeNumber);
+        Call <ProductSearchResult> productCall = upcService.getUpcItemDbApi().getProductSearchResult(barcodeNumber);
         productCall.enqueue(new Callback <ProductSearchResult>() {
             @Override
-            public void onResponse(Call <ProductSearchResult> call, Response <ProductSearchResult> response) {
+            public void onResponse(@NonNull Call <ProductSearchResult> call, @NonNull Response <ProductSearchResult> response) {
                 Log.d(TAG, "onResponse: I SEARCHING FOR RESULT");
                 ProductSearchResult productSearchResult = response.body();
-                if (productSearchResult.getItems()==null){
-
-                }else {
+                if (productSearchResult!=null && productSearchResult.getTotal()>0 ) {
                     String productName = productSearchResult.getItems().get(0).getTitle();
                     List <String> imageList = productSearchResult.getItems().get(0).getImages();
                     String productDescription = productSearchResult.getItems().get(0).getDescription();
                     List <Offers> merchantList = productSearchResult.getItems().get(0).getOffers();
 
+                    viewImpl.hideFragment();
                     viewImpl.showTitle(productName);
                     viewImpl.showDescription(productDescription);
                     viewImpl.showImage(imageList.get(0));
@@ -55,6 +55,8 @@ public class ProductPresenter implements ProductContract.Presenter{
                     if (!merchantList.isEmpty()) {
                         viewImpl.showMerchants(merchantList);
                     }
+                } else {
+                    viewImpl.showFragment();
                 }
             }
 

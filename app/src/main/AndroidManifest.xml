@@ -18,19 +18,20 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".CameraActivity"
             android:exported="true" />
-
         <activity android:name=".ProductResultActivity" />
 
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="barcode" />
 
+        <activity android:name=".UpcInfoActivity"></activity>
     </application>
 
 </manifest>

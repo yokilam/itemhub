@@ -29,8 +29,16 @@ public class MainActivity extends AppCompatActivity {
             getRuntimePermissions();
         }
 
-        Button goToCameraButton = findViewById(R.id.scan_barcode_button);
-        Button itemHubInfo= findViewById(R.id.itemhub_info);
+        Button upcInfo= findViewById(R.id.upc_info_button);
+        upcInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentToUpcActivity= new Intent(MainActivity.this, UpcInfoActivity.class);
+                startActivity(intentToUpcActivity);
+            }
+        });
+
+        Button goToCameraButton = findViewById(R.id.scan_barcode_button);;
 
         goToCameraButton.setOnClickListener(new View.OnClickListener() {
             @Override

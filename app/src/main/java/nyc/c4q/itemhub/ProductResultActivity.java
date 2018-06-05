@@ -1,12 +1,15 @@
 package nyc.c4q.itemhub;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +29,7 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
     private ImageView productImage;
     private RecyclerView merchantRecyclerView;
     private WebView myWebView;
+    private FrameLayout noItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
         description = findViewById(R.id.product_description);
         productImage = findViewById(R.id.product_picture);
         myWebView = findViewById(R.id.webview);
+        noItem= findViewById(R.id.no_item);
     }
 
     @Override
@@ -77,6 +82,16 @@ public class ProductResultActivity extends AppCompatActivity implements ProductC
     @Override
     public void loadWebsite(String url) {
         myWebView.loadUrl(url);
+    }
+
+    @Override
+    public void showFragment() {
+        noItem.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideFragment() {
+        noItem.setVisibility(View.GONE);
     }
 
     private void setupRecyclerView() {
